@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>mentorpiA1_simulator</name>
+  <name>mentorpia1_simulator</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="viktornfa@gmail.com">Victor Nan Fernandez-Ayala</maintainer>

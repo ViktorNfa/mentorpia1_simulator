@@ -2,7 +2,7 @@ import os
 from glob import glob
 from setuptools import setup
 
-package_name = 'mentorpiA1_simulator'
+package_name = 'mentorpia1_simulator'
 
 setup(
     name=package_name,
