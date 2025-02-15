@@ -1,17 +1,25 @@
-<?xml version="1.0" ?>
+<!-- mentorpia1.sdf -->
 <sdf version="1.8">
   <model name="mentorpia1">
+    <!-- The model pose itself can remain (0,0,0) or whatever starting pose you want. -->
     <pose>0 0 0 0 0 0</pose>
     <static>false</static>
 
-    <!-- Base Footprint -->
+    <!-- Base Footprint (root link) -->
     <link name="base_footprint">
+      <!-- Put base_footprint at the model origin -->
       <pose>0 0 0 0 0 0</pose>
     </link>
+    <!-- This joint is fixed, but we no longer store an offset here. -->
+    <joint name="base_footprint_to_base_link" type="fixed">
+      <parent>base_footprint</parent>
+      <child>base_link</child>
+    </joint>
 
     <!-- Base Link -->
     <link name="base_link">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- In URDF, the offset from base_footprint to base_link is (0 0 0.07). -->
+      <pose relative_to="base_footprint">0 0 0.07 0 0 0</pose>
       <inertial>
         <mass>0.0961047465616957</mass>
         <inertia>
@@ -23,7 +31,7 @@
           <iyz>-2.95282759133104e-08</iyz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="base_link_visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -33,9 +41,10 @@
         <material>
           <ambient>0 0 0 1</ambient>
           <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
         </material>
       </visual>
-      <collision name="collision">
+      <collision name="base_link_collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -44,25 +53,21 @@
         </geometry>
       </collision>
     </link>
-    <joint name="base_footprint_to_base_link" type="fixed">
-      <pose>0 0 0.07 0 0 0</pose>
-      <parent>base_footprint</parent>
-      <child>base_link</child>
-    </joint>
 
-    <!-- Back Axle and Wheels -->
+    <!-- Back Axle (fixed to base_link) -->
     <link name="back_axle">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF joint "base_to_back_axle" had <origin xyz="0 0 0"/> -->
+      <pose relative_to="base_link">0 0 0 0 0 0</pose>
     </link>
     <joint name="base_to_back_axle" type="fixed">
-      <pose>0 0 0 0 0 0</pose>
       <parent>base_link</parent>
       <child>back_axle</child>
     </joint>
 
     <!-- Left Back Wheel -->
     <link name="wheel_lb_Link">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF joint "wheel_lb_Joint" had origin xyz="-0.07 0.07 -0.03" relative to back_axle -->
+      <pose relative_to="back_axle">-0.07 0.07 -0.03 0 0 0</pose>
       <inertial>
         <mass>0.0271078161230754</mass>
         <inertia>
@@ -74,7 +79,7 @@
           <iyz>-5.763890541079e-11</iyz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="wheel_lb_visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -84,9 +89,10 @@
         <material>
           <ambient>0 0 0 1</ambient>
           <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
         </material>
       </visual>
-      <collision name="collision">
+      <collision name="wheel_lb_collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -95,8 +101,8 @@
         </geometry>
       </collision>
     </link>
-    <joint name="wheel_lb_Joint" type="continuous">
-      <pose>-0.07 0.07 -0.03 0 0 0</pose>
+    <!-- The wheel joint is now just revolute, with no pose. The link offset is above. -->
+    <joint name="wheel_lb_Joint" type="revolute">
       <parent>back_axle</parent>
       <child>wheel_lb_Link</child>
       <axis>
@@ -106,7 +112,8 @@
 
     <!-- Right Back Wheel -->
     <link name="wheel_rb_Link">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF joint "wheel_rb_Joint" origin xyz="-0.07 -0.07 -0.03" relative to back_axle -->
+      <pose relative_to="back_axle">-0.07 -0.07 -0.03 0 0 0</pose>
       <inertial>
         <mass>0.0271078005024283</mass>
         <inertia>
@@ -118,7 +125,7 @@
           <iyz>6.31638424138502e-11</iyz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="wheel_rb_visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -128,9 +135,10 @@
         <material>
           <ambient>0 0 0 1</ambient>
           <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
         </material>
       </visual>
-      <collision name="collision">
+      <collision name="wheel_rb_collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -139,8 +147,7 @@
         </geometry>
       </collision>
     </link>
-    <joint name="wheel_rb_Joint" type="continuous">
-      <pose>-0.07 -0.07 -0.03 0 0 0</pose>
+    <joint name="wheel_rb_Joint" type="revolute">
       <parent>back_axle</parent>
       <child>wheel_rb_Link</child>
       <axis>
@@ -148,12 +155,12 @@
       </axis>
     </joint>
 
-    <!-- Front Axle and Steering -->
+    <!-- Front Axle (steering pivot) -->
     <link name="front_axle">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF "steering_wheel_joint" has xyz="0.07 0 -0.03" from base_link -->
+      <pose relative_to="base_link">0.07 0 -0.03 0 0 0</pose>
     </link>
     <joint name="steering_wheel_joint" type="revolute">
-      <pose>0.07 0 -0.03 0 0 0</pose>
       <parent>base_link</parent>
       <child>front_axle</child>
       <axis>
@@ -166,11 +173,13 @@
         </limit>
       </axis>
     </joint>
+
+    <!-- Left Steering Link -->
     <link name="left_steering_link">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF "left_steering_joint" origin xyz="0 0.07 0" from front_axle -->
+      <pose relative_to="front_axle">0 0.07 0 0 0 0</pose>
     </link>
     <joint name="left_steering_joint" type="revolute">
-      <pose>0 0.07 0 0 0 0</pose>
       <parent>front_axle</parent>
       <child>left_steering_link</child>
       <axis>
@@ -183,11 +192,13 @@
         </limit>
       </axis>
     </joint>
+
+    <!-- Right Steering Link -->
     <link name="right_steering_link">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF "right_steering_joint" origin xyz="0 -0.07 0" -->
+      <pose relative_to="front_axle">0 -0.07 0 0 0 0</pose>
     </link>
     <joint name="right_steering_joint" type="revolute">
-      <pose>0 -0.07 0 0 0 0</pose>
       <parent>front_axle</parent>
       <child>right_steering_link</child>
       <axis>
@@ -200,8 +211,11 @@
         </limit>
       </axis>
     </joint>
+
+    <!-- Left Front Wheel -->
     <link name="wheel_lf_Link">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF "wheel_lf_Joint" origin xyz="0 0 0" from left_steering_link -->
+      <pose relative_to="left_steering_link">0 0 0 0 0 0</pose>
       <inertial>
         <mass>0.0252873083503169</mass>
         <inertia>
@@ -213,7 +227,7 @@
           <iyz>-5.47583950457701e-11</iyz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="wheel_lf_visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -223,9 +237,10 @@
         <material>
           <ambient>0 0 0 1</ambient>
           <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
         </material>
       </visual>
-      <collision name="collision">
+      <collision name="wheel_lf_collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -234,16 +249,18 @@
         </geometry>
       </collision>
     </link>
-    <joint name="wheel_lf_Joint" type="continuous">
-      <pose>0 0 0 0 0 0</pose>
+    <joint name="wheel_lf_Joint" type="revolute">
       <parent>left_steering_link</parent>
       <child>wheel_lf_Link</child>
       <axis>
         <xyz>0 1 0</xyz>
       </axis>
     </joint>
+
+    <!-- Right Front Wheel -->
     <link name="wheel_rf_Link">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF "wheel_rf_Joint" origin xyz="0 0 0" from right_steering_link -->
+      <pose relative_to="right_steering_link">0 0 0 0 0 0</pose>
       <inertial>
         <mass>0.0252873548617242</mass>
         <inertia>
@@ -255,7 +272,7 @@
           <iyz>6.31638512668579e-11</iyz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="wheel_rf_visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -265,9 +282,10 @@
         <material>
           <ambient>0 0 0 1</ambient>
           <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
         </material>
       </visual>
-      <collision name="collision">
+      <collision name="wheel_rf_collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -276,8 +294,7 @@
         </geometry>
       </collision>
     </link>
-    <joint name="wheel_rf_Joint" type="continuous">
-      <pose>0 0 0 0 0 0</pose>
+    <joint name="wheel_rf_Joint" type="revolute">
       <parent>right_steering_link</parent>
       <child>wheel_rf_Link</child>
       <axis>
@@ -285,9 +302,10 @@
       </axis>
     </joint>
 
-    <!-- Lidar Sensor (attached to lidar_frame) -->
+    <!-- Lidar Sensor Link -->
     <link name="lidar_frame">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF "lidar_Joint" origin xyz="-0.0096019 -0.00008533 0.092501" from base_link -->
+      <pose relative_to="base_link">-0.0096019 -0.00008533 0.092501 0 0 0</pose>
       <inertial>
         <mass>0.0405423044068563</mass>
         <inertia>
@@ -299,7 +317,7 @@
           <iyz>1.1006285118993e-08</iyz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="lidar_visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -309,9 +327,10 @@
         <material>
           <ambient>0 0 0 1</ambient>
           <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
         </material>
       </visual>
-      <collision name="collision">
+      <collision name="lidar_collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -346,23 +365,24 @@
         <visualize>false</visualize>
       </sensor>
     </link>
+    <joint name="lidar_Joint" type="fixed">
+      <parent>base_link</parent>
+      <child>lidar_frame</child>
+    </joint>
 
-    <!-- RGBD Camera Sensor -->
-    <!-- The following link is renamed from "depth_cam" to "camera_link" to mimic the Stretch setup -->
+    <!-- Camera Link -->
     <link name="camera_link">
-      <pose>0 0 0 0 0 0</pose>
+      <!-- URDF "cam_Joint": origin xyz="0.064015 -0.00013463 0.051155" from base_link -->
+      <pose relative_to="base_link">0.064015 -0.00013463 0.051155 0 0 0</pose>
       <inertial>
         <mass>0.01</mass>
         <inertia>
           <ixx>0.001</ixx>
           <iyy>0.001</iyy>
           <izz>0.001</izz>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyz>0</iyz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="camera_visual">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -372,9 +392,10 @@
         <material>
           <ambient>0 0 0 1</ambient>
           <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
         </material>
       </visual>
-      <collision name="collision">
+      <collision name="camera_collision">
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
@@ -399,19 +420,16 @@
         <update_rate>20</update_rate>
         <visualize>true</visualize>
         <topic>camera</topic>
+        <!-- SDF doesn't formally define <gz_frame_id>, but GzSim will just ignore or warn -->
         <gz_frame_id>camera_link</gz_frame_id>
       </sensor>
     </link>
     <joint name="cam_Joint" type="fixed">
-      <pose>0.064015 -0.00013463 0.051155 0 0 0</pose>
       <parent>base_link</parent>
       <child>camera_link</child>
     </joint>
-    <joint name="joint_camera_link_optical" type="fixed">
-      <pose>0 0 0 0 0 0</pose>
-      <parent>camera_link</parent>
-      <child>camera_link_optical</child>
-    </joint>
+
+    <!-- Optical sub-link for the camera, fixed at the same pose -->
     <link name="camera_link_optical">
       <pose>0 0 0 0 0 0</pose>
       <inertial>
@@ -420,17 +438,18 @@
           <ixx>0.001</ixx>
           <iyy>0.001</iyy>
           <izz>0.001</izz>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyz>0</iyz>
         </inertia>
       </inertial>
     </link>
+    <joint name="joint_camera_link_optical" type="fixed">
+      <parent>camera_link</parent>
+      <child>camera_link_optical</child>
+    </joint>
 
-    <!-- IMU Sensor -->
+    <!-- IMU Link -->
     <link name="imu_link">
-      <pose>0 0 0 0 0 0</pose>
-      <!-- You can add inertial properties here if needed -->
+      <!-- URDF "imu_joint" origin is xyz="0 0 0.11159" rpy="0 0 -1.5708" from base_link -->
+      <pose relative_to="base_link">0 0 0.11159 0 0 -1.5708</pose>
       <sensor name="imu" type="imu">
         <always_on>1</always_on>
         <update_rate>50</update_rate>
@@ -439,13 +458,12 @@
       </sensor>
     </link>
     <joint name="imu_joint" type="fixed">
-      <pose>0 0 0.11159 0 0 -1.5708</pose>
       <parent>base_link</parent>
       <child>imu_link</child>
     </joint>
 
     <!-- Ackermann Steering Plugin -->
-    <plugin filename="gz-sim-ackermann-steering-system" name="gz::sim::systems::AckermannSteering">
+    <!-- <plugin filename="gz-sim-ackermann-steering-system" name="gz::sim::systems::AckermannSteering">
       <steering_joint>steering_wheel_joint</steering_joint>
       <wheel_joints>
         <front_left_wheel>wheel_lf_Joint</front_left_wheel>
@@ -461,7 +479,25 @@
       <child_frame_id>base_link</child_frame_id>
       <max_velocity>1.0</max_velocity>
       <max_acceleration>3.2</max_acceleration>
+    </plugin> -->
+
+    <!-- Diff Drive Plugin (approximate ackermann as diff) -->
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+      <!-- Joints to treat as left wheels (both front and rear left) -->
+      <left_joint>wheel_lb_Joint</left_joint>
+      <left_joint>wheel_lf_Joint</left_joint>
+      <!-- Joints to treat as right wheels (both front and rear right) -->
+      <right_joint>wheel_rb_Joint</right_joint>
+      <right_joint>wheel_rf_Joint</right_joint>
+
+      <!-- Robot dimensions -->
+      <wheel_separation>0.28</wheel_separation>
+      <wheel_radius>0.05</wheel_radius>
+
+      <!-- Listen for a standard Twist on this GZ Transport topic -->
+      <topic>cmd_vel</topic>
     </plugin>
+
 
     <!-- Joint State Publisher Plugin -->
     <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher"/>

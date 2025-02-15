@@ -26,6 +26,7 @@ setup(
     license='TODO: License declaration',
     entry_points={
         'console_scripts': [
+            'ackermann_to_twist = mentorpia1_simulator.ackermann_to_twist:main',
         ],
     },
 )
