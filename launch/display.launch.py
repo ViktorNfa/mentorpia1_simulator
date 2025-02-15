@@ -8,7 +8,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.actions import DeclareLaunchArgument, TimerAction, IncludeLaunchDescription
 
 def generate_launch_description():
-    compiled = os.environ['need_compile']
     namespace = LaunchConfiguration('namespace', default='')
     use_namespace = LaunchConfiguration('use_namespace', default='false')
     frame_prefix = LaunchConfiguration('frame_prefix', default='')
@@ -19,12 +18,9 @@ def generate_launch_description():
     namespace_arg = DeclareLaunchArgument('namespace', default_value=namespace)
     use_namespace_arg = DeclareLaunchArgument('use_namespace', default_value=use_namespace)
 
-    if compiled == 'True':
-        mentorpiA1_simulator_package_path = get_package_share_directory('mentorpiA1_simulator')
-    else:
-        mentorpiA1_simulator_package_path = '/home/ubuntu/ros2_ws/src/simulations/mentorpiA1_simulator'
-    urdf_path = os.path.join(mentorpiA1_simulator_package_path, 'urdf/mentorpi.xacro')
-    rviz_config_file = os.path.join(mentorpiA1_simulator_package_path, 'rviz/view.rviz')
+    mentorpia1_simulator_package_path = get_package_share_directory('mentorpia1_simulator')
+    urdf_path = os.path.join(mentorpia1_simulator_package_path, 'urdf/mentorpi.xacro')
+    rviz_config_file = os.path.join(mentorpia1_simulator_package_path, 'rviz/view.rviz')
 
     robot_description = Command(['xacro ', urdf_path])
 
@@ -46,7 +42,7 @@ def generate_launch_description():
     )
 
     rviz_launch = IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(os.path.join(mentorpiA1_simulator_package_path, 'launch', 'rviz.launch.py')),
+            PythonLaunchDescriptionSource(os.path.join(mentorpia1_simulator_package_path, 'launch', 'rviz.launch.py')),
             launch_arguments={
                               'namespace': namespace,
                               'use_namespace': use_namespace,

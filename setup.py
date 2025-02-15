@@ -14,8 +14,8 @@ setup(
         (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*.*'))),
         (os.path.join('share', package_name, 'urdf'), glob(os.path.join('urdf', '*.*'))),
         (os.path.join('share', package_name, 'rviz'), glob(os.path.join('rviz', '*.*'))),
+        (os.path.join('share', package_name, 'worlds'), glob(os.path.join('worlds', '*.*'))),
         (os.path.join('share', package_name, 'meshes/acker'), glob(os.path.join('meshes/acker', '*.*'))),
-        (os.path.join('share', package_name, 'meshes/mecanum'), glob(os.path.join('meshes/mecanum', '*.*'))),
 
     ],
     install_requires=['setuptools'],
@@ -24,7 +24,6 @@ setup(
     maintainer_email='viktornfa@gmail.com',
     description='TODO: Package description',
     license='TODO: License declaration',
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
         ],

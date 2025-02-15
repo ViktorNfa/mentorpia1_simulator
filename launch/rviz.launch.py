@@ -12,11 +12,7 @@ from launch.actions import DeclareLaunchArgument, EmitEvent, RegisterEventHandle
 
 def generate_launch_description():
     # Get the launch directory
-    compiled = os.environ['need_compile']
-    if compiled == 'True':
-        mentorpiA1_simulator_package_path = get_package_share_directory('mentorpiA1_simulator')
-    else:
-        mentorpiA1_simulator_package_path = '/home/ubuntu/ros2_ws/src/simulations/mentorpiA1_simulator'
+    mentorpia1_simulator_package_path = get_package_share_directory('mentorpia1_simulator')
 
     # Create the launch configuration variables
     namespace = LaunchConfiguration('namespace')
@@ -37,7 +33,7 @@ def generate_launch_description():
 
     declare_rviz_config_file_cmd = DeclareLaunchArgument(
         'rviz_config',
-        default_value=os.path.join(mentorpiA1_simulator_package_path, 'rviz', 'view.rviz'),
+        default_value=os.path.join(mentorpia1_simulator_package_path, 'rviz', 'view.rviz'),
         description='Full path to the RVIZ config file to use')
 
     # Launch rviz
