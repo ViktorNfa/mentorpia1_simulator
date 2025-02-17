@@ -28,7 +28,10 @@ A simple ROS 2 package for simulating an Ackermann-steered robot in Gazebo and v
     ```bash
     ros2 launch mentorpia1_simulator mentorpia1_simulator.launch.py
     ```
-    This starts Gazebo with the robot model and the Diff Drive converter.
+    This starts Gazebo with the robot model and the Diff Drive converter. You can publish Ackermann steering commands as:
+    ```bash
+    ros2 topic pub /cmd_ackermann ackermann_msgs/msg/AckermannDrive "{steering_angle: 0.3, speed: 1.0}"
+    ```
 
 2. **Launch RViz**
     ```bash
