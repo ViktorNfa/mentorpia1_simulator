@@ -12,8 +12,8 @@ def generate_launch_description():
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
 
     mesh_path = os.path.join(pkg_mentorpia1, 'meshes')
-    current_paths = os.environ.get('GAZEBO_MODEL_PATH', '')
-    os.environ['GAZEBO_MODEL_PATH'] = mesh_path + ':' + current_paths
+    current_paths = os.environ.get('IGN_GAZEBO_RESOURCE_PATH', '')
+    os.environ['IGN_GAZEBO_RESOURCE_PATH'] = '/home/sebesen/research/src' + ':' + current_paths
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
