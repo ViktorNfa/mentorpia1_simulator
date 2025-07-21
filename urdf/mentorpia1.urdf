@@ -18,14 +18,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/base_link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/base_link.STL"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/base_link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/base_link.STL"/>
       </geometry>
     </collision>
   </link>
@@ -52,14 +52,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/wheel_lb_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/wheel_lb_Link.STL"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/wheel_lb_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/wheel_lb_Link.STL"/>
       </geometry>
     </collision>
   </link>
@@ -78,14 +78,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/wheel_rb_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/wheel_rb_Link.STL"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/wheel_rb_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/wheel_rb_Link.STL"/>
       </geometry>
     </collision>
   </link>
@@ -129,14 +129,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/wheel_lf_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/wheel_lf_Link.STL"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/wheel_lf_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/wheel_lf_Link.STL"/>
       </geometry>
     </collision>
   </link>
@@ -155,14 +155,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/wheel_rf_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/wheel_rf_Link.STL"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/wheel_rf_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/wheel_rf_Link.STL"/>
       </geometry>
     </collision>
   </link>
@@ -182,14 +182,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/lidar_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/lidar_Link.STL"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/lidar_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/lidar_Link.STL"/>
       </geometry>
     </collision>
   </link>
@@ -209,14 +209,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/cam_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/cam_Link.STL"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://mentorpia1_simulator/meshes/acker/cam_Link.STL"/>
+        <mesh filename="package://mentorpia1_simulator_s2025/meshes/acker/cam_Link.STL"/>
       </geometry>
     </collision>
   </link>

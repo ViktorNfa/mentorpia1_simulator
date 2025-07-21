@@ -8,7 +8,7 @@ from launch_ros.actions import Node
 from launch.substitutions import LaunchConfiguration, TextSubstitution
 
 def generate_launch_description():
-    pkg_mentorpia1 = get_package_share_directory('mentorpia1_simulator')
+    pkg_mentorpia1 = get_package_share_directory('mentorpia1_simulator_s2025')
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
     src_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(pkg_mentorpia1)))), 'src')
     current_paths = os.environ.get('IGN_GAZEBO_RESOURCE_PATH', '')
@@ -75,7 +75,7 @@ def generate_launch_description():
 
     # Node that converts AckermannDrive -> Twist, so you can publish Ackermann on /cmd_ackermann
     ackermann_to_twist = Node(
-        package='mentorpia1_simulator',
+        package='mentorpia1_simulator_s2025',
         executable='ackermann_to_twist',  # if you set it up as a console script
         # or use a direct path if not installed as console script
         name='ackermann_to_twist',

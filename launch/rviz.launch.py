@@ -12,7 +12,7 @@ from launch.actions import DeclareLaunchArgument, EmitEvent, RegisterEventHandle
 
 def generate_launch_description():
     # Get the launch directory
-    mentorpia1_simulator_package_path = get_package_share_directory('mentorpia1_simulator')
+    mentorpia1_simulator_package_path = get_package_share_directory('mentorpia1_simulator_s2025')
 
     # Create the launch configuration variables
     namespace = LaunchConfiguration('namespace')

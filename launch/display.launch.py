@@ -18,7 +18,7 @@ def generate_launch_description():
     namespace_arg = DeclareLaunchArgument('namespace', default_value=namespace)
     use_namespace_arg = DeclareLaunchArgument('use_namespace', default_value=use_namespace)
 
-    mentorpia1_simulator_package_path = get_package_share_directory('mentorpia1_simulator')
+    mentorpia1_simulator_package_path = get_package_share_directory('mentorpia1_simulator_s2025')
     urdf_path = os.path.join(mentorpia1_simulator_package_path, 'urdf/mentorpi.xacro')
     rviz_config_file = os.path.join(mentorpia1_simulator_package_path, 'rviz/view.rviz')
 

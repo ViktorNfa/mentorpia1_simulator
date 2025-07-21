@@ -35,7 +35,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/base_link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/base_link.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -48,7 +48,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/base_link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/base_link.STL</uri>
           </mesh>
         </geometry>
       </collision>
@@ -83,7 +83,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/wheel_lb_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/wheel_lb_Link.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -96,7 +96,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/wheel_lb_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/wheel_lb_Link.STL</uri>
           </mesh>
         </geometry>
       </collision>
@@ -129,7 +129,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/wheel_rb_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/wheel_rb_Link.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -142,7 +142,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/wheel_rb_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/wheel_rb_Link.STL</uri>
           </mesh>
         </geometry>
       </collision>
@@ -231,7 +231,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/wheel_lf_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/wheel_lf_Link.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -244,7 +244,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/wheel_lf_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/wheel_lf_Link.STL</uri>
           </mesh>
         </geometry>
       </collision>
@@ -276,7 +276,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/wheel_rf_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/wheel_rf_Link.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -289,7 +289,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/wheel_rf_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/wheel_rf_Link.STL</uri>
           </mesh>
         </geometry>
       </collision>
@@ -321,7 +321,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/lidar_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/lidar_Link.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -334,7 +334,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/lidar_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/lidar_Link.STL</uri>
           </mesh>
         </geometry>
       </collision>
@@ -386,7 +386,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/cam_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/cam_Link.STL</uri>
           </mesh>
         </geometry>
         <material>
@@ -399,7 +399,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mentorpia1_simulator/meshes/acker/cam_Link.STL</uri>
+            <uri>model://mentorpia1_simulator_s2025/meshes/acker/cam_Link.STL</uri>
           </mesh>
         </geometry>
       </collision>

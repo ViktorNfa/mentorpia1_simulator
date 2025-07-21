@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="rosmentor" xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:property name="machine"      value="$(env MACHINE_TYPE)"/>
-    <xacro:include filename="$(find mentorpia1_simulator)/urdf/ackerman.xacro"/>
-    <xacro:include filename="$(find mentorpia1_simulator)/urdf/inertial_matrix.xacro" />
+    <xacro:include filename="$(find mentorpia1_simulator_s2025)/urdf/ackerman.xacro"/>
+    <xacro:include filename="$(find mentorpia1_simulator_s2025)/urdf/inertial_matrix.xacro" />
 </robot>

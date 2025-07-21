@@ -2,7 +2,7 @@ import os
 from glob import glob
 from setuptools import setup
 
-package_name = 'mentorpia1_simulator'
+package_name = 'mentorpia1_simulator_s2025'
 
 setup(
     name=package_name,
@@ -26,7 +26,7 @@ setup(
     license='TODO: License declaration',
     entry_points={
         'console_scripts': [
-            'ackermann_to_twist = mentorpia1_simulator.ackermann_to_twist:main',
+            'ackermann_to_twist = mentorpia1_simulator_s2025.ackermann_to_twist:main',
         ],
     },
 )
